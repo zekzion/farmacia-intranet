@@ -1,10 +1,15 @@
 <?php
-
-// se incluye el header para todas las paginas expecto INVENTARIO > PRODUCTOS e INVENTARIO > CATEGORIAS
-$titulo = "Registrarse";
-define('DOC_ROOT_PATH', $_SERVER['DOCUMENT_ROOT'].'/');
-include "$_SERVER[DOCUMENT_ROOT]/pages/header.php";
+session_start();
+// Verificar si ya se ha iniciado sesión
+if (isset($_SESSION['email'])) {
+    header("Location: dashboard.php");
+    exit();
+}
+$titulo = "Pagina de Registro";
 ?>
+
+<!-- Estilos css -->
+<?php require "cabecera.php"; ?>
 
 <body class="bg-gradient-primary d-flex align-items-center min-vh-100">
 <div class="container">
@@ -32,7 +37,7 @@ include "$_SERVER[DOCUMENT_ROOT]/pages/header.php";
                             <hr>
                         </form>
                         <div class="text-center"><a class="small">¿Olvidaste tu contraseña?</a></div>
-                        <div class="text-center"><a class="small" href="login.php">¿Ya tienes una cuenta? Inicia Sesión</a></div>
+                        <div class="text-center"><a class="small" href="../public/index.php">¿Ya tienes una cuenta? Inicia Sesión</a></div>
                     </div>
                 </div>
             </div>
