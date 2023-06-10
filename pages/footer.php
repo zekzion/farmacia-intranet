@@ -31,7 +31,11 @@
 <script src="../assets/fullCalendar/index.global.min.js"></script>
 <script src="../public/js/theme.js"></script>
 <script src="../assets/jspdf/jspdf.umd.min.js"></script>
+<script src="../assets/html2canvas/html2canvas.min.js"></script>
 <script src="../public/js/validar-formulario.js"></script>
+<script src="../public/js/generarpdf.js"></script>
+
+<script src="../public/js/jspdf.plugin.autotable.js"></script>
 </body>
 
 </html>

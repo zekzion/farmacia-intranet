@@ -14,7 +14,7 @@ if (isset($_POST["txtemail"]) && isset($_POST["txtpassword"])) {
     $email = $_POST["txtemail"];
     $pass = $_POST["txtpassword"];
 
-    // archivo json
+    // archivo json para importar los datos en usuarios.json
     $usuariosJSON = file_get_contents($_SERVER['DOCUMENT_ROOT'] . '/pages/usuarios.json');
     $usuarios = json_decode($usuariosJSON, true);
 

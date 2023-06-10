@@ -6,6 +6,61 @@
         exit();
     }
     $titulo = "Pagina de Productos";
+
+
+    /* codigo para agregar nuevos productos *******************************/
+    if (isset($_POST["nombre-producto"]) && isset($_POST["categoria-producto"]) && isset($_POST["precio-producto"]) && isset($_POST["cantidad-producto"])) {
+        $nombrePro = $_POST["nombre-producto"];
+        $categoriaPro = $_POST["categoria-producto"];
+        $precioPro = $_POST["precio-producto"];
+        $cantidadPro = $_POST["cantidad-producto"];
+
+        // generacion de id para  productos
+        $id = uniqid();
+
+
+        // crear array producto
+        $nuevoProducto = array(
+            "id" => $id,
+            "nombre" => $nombrePro,
+            "categoria" => $categoriaPro,
+            "precio" => $precioPro,
+            "cantidad" => $cantidadPro
+        );
+
+        // verificar si exinten array en la sesion
+        if (isset($_SESSION["productos"])) {
+            // agregar producto al array
+            $_SESSION["productos"][] = $nuevoProducto;
+        } else {
+            // crear array de productos y agregarlo
+            $_SESSION["productos"] = array($nuevoProducto);
+        }
+        // Redireccionar a la página actual para evitar enviar el formulario por cada recarga
+        header("Location: " . $_SERVER['REQUEST_URI']);
+        exit();
+    }
+
+    // codigo para liminar productos
+    if (isset($_GET["eliminar"])) {
+        $eliminarPro = $_GET["eliminar"];
+        $prodEncontrado = false;
+
+        // verificar si existen productos en la sesion
+        if (isset($_SESSION["productos"])) {
+            // buscar producto
+            foreach ($_SESSION["productos"] as $index => $producto) {
+                // comparar id de producto con el enviado por el link "eliminar"
+                if ($producto["id"] === $eliminarPro) {
+                   // guardar indice del producto encontrado
+                    $prodEncontrado = $index;
+                    break; // salir del foreach
+                }
+            }
+        }
+    }
+
+
 ?>
 
     <!-- Estilos css -->
@@ -51,19 +106,24 @@
                             <h4 class="modal-title text-secondary">Registrar Nuevo Producto</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="productos.php" method="post">
                                 <div class="row" id="nom">
                                     <div class="col">
                                         <div class="mb-3">
-                                            <label class="form-label" for="service_name"><strong>Nombre</strong></label>
-                                            <input class="form-control" type="text" id="service_name-1" placeholder="Nombre del Producto" name="nombre-producto" required="">
+                                            <label class="form-label" for="nombre-producto"><strong>Nombre</strong></label>
+                                            <input class="form-control" type="text" id="nombre-producto" placeholder="Nombre del Producto" name="nombre-producto" required="">
                                         </div>
                                     </div>
                                 </div>
-                                <div id="descrip" class="mb-3">
-                                    <label class="form-label" for="descripcion-producto"><strong>Descripción</strong></label>
-                                    <textarea class="form-control" id="descripcion-producto" rows="4" name="descripcion-producto" placeholder="Descripción del Producto" required=""></textarea>
+                                <div class="row" id="nom">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="categoria-producto"><strong>Categoria</strong></label>
+                                            <input class="form-control" type="text" id="categoria-producto" placeholder="Categoria del Producto" name="categoria-producto" required="">
+                                        </div>
+                                    </div>
                                 </div>
+
                                 <div class="row" id="prec-cant">
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label" for="precio-producto"><strong>Precio</strong></label>
@@ -79,7 +139,7 @@
                                 <div id="error-entrada" class="mb-3"><span class="fw-bold text-danger"></span></div>
                                 <div class="col d-flex justify-content-end">
                                     <button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancelar</button>
-                                    <button class="btn btn-primary ms-3" type="button">Guardar</button>
+                                    <button class="btn btn-primary ms-3" type="submit">Guardar</button>
                                 </div>
                             </form>
                         </div>
@@ -93,7 +153,7 @@
                             <h4 class="modal-title text-secondary">Editar Producto</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="productos.php" method="post">
                                 <div class="row" id="nom-1">
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label" for="service_name"><strong>Nombre</strong></label><input class="form-control" type="text" id="service_name-2" name="nombre-producto" required=""></div>
@@ -122,12 +182,18 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title fw-bold">Confirmar eliminación</h5><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                            <h5 class="modal-title fw-bold" id="modalConfirmarEliminarLabel">Confirmar eliminación</h5>
+                            <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
-                            <p>¿Estás seguro de que deseas eliminar este producto?</p>
+                            <p>¿Estás seguro de que deseas eliminar este producto con ID: <span></span>?</p>
                         </div>
-                        <div class="modal-footer"><button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancelar</button><button class="btn btn-danger" type="button">Eliminar</button></div>
+                        <div class="modal-footer">
+                            <form method="get">
+                                <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancelar</button>
+                                <button class="btn btn-danger" type="submit">Eliminar</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -157,7 +223,7 @@
                             </li>
                             <li class="nav-item">
                                 <div class="btn-group"><button class="btn btn-primary" type="button">Exportar</button><button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
-                                    <div class="dropdown-menu"><a class="dropdown-item" href="#">PDF</a></div>
+                                    <div class="dropdown-menu"><a  onclick="descargarPDF('dataTables')" class="dropdown-item" id="aPDF" href="#">PDF</a></div>
                                 </div>
                             </li>
                             <li class="nav-item ms-1"><button class="btn btn-primary" type="button" style="border-bottom-style: none;" data-bs-target="#modal-agregar-producto" data-bs-toggle="modal">Nuevo</button></li>
@@ -181,7 +247,7 @@
                             </div>
                         </div>
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                            <table class="table my-0" id="dataTable">
+                            <table class="table my-0" id="dataTables">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -193,70 +259,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td><img class="me-2" width="30" height="30" src="../assets/img/productos/1.png">Ibuprofeno 400mg</td>
-                                        <td>Medicamentos</td>
-                                        <td>S/. 99</td>
-                                        <td>33</td>
-                                        <td class="text-start"><a id="editar" href="#" data-bs-target="#modal-editar-producto" data-bs-toggle="modal"><i class="fas fa-pencil-alt text-primary text-bg-light"></i></a><a id="eliminar" class="ms-3" href="#" data-bs-target="#modal-eliminar-producto" data-bs-toggle="modal"><i class="fas fa-trash-alt text-danger text-bg-light"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td><img class="rounded-circle me-2" width="30" height="30" src="../assets/img/productos/1.png">Paracetamol 500mg</td>
-                                        <td>Medicamentos</td>
-                                        <td>S/. 99</td>
-                                        <td>47</td>
-                                        <td><a id="editar-1" href="#" data-bs-target="#modal-editar-producto" data-bs-toggle="modal"><i class="fas fa-pencil-alt text-primary text-bg-light"></i></a><a id="eliminar-1" class="ms-3" href="#" data-bs-target="#modal-eliminar-producto" data-bs-toggle="modal"><i class="fas fa-trash-alt text-danger text-bg-light"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td><img class="rounded-circle me-2" width="30" height="30" src="../assets/img/productos/1.png">Ibuprofeno 400mg</td>
-                                        <td>Medicamentos</td>
-                                        <td>S/. 99</td>
-                                        <td>66</td>
-                                        <td><a id="editar-2" href="#" data-bs-target="#modal-editar-producto" data-bs-toggle="modal"><i class="fas fa-pencil-alt text-primary text-bg-light"></i></a><a id="eliminar-2" class="ms-3" href="#" data-bs-target="#modal-eliminar-producto" data-bs-toggle="modal"><i class="fas fa-trash-alt text-danger text-bg-light"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td><img class="rounded-circle me-2" width="30" height="30" src="../assets/img/productos/1.png">Ibuprofeno 400mg</td>
-                                        <td>Cuidado Personal</td>
-                                        <td>S/. 99</td>
-                                        <td>41</td>
-                                        <td><a id="editar-3" href="#"><i class="fas fa-pencil-alt text-primary text-bg-light"></i></a><a id="eliminar-3" class="ms-3" href="#"><i class="fas fa-trash-alt text-danger text-bg-light"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td><img class="rounded-circle me-2" width="30" height="30" src="../assets/img/productos/1.png">Ibuprofeno 400mg</td>
-                                        <td>Cuidado Bucal</td>
-                                        <td>S/. 99</td>
-                                        <td>28</td>
-                                        <td><a id="editar-4" href="#"><i class="fas fa-pencil-alt text-primary text-bg-light"></i></a><a id="eliminar-4" class="ms-3" href="#"><i class="fas fa-trash-alt text-danger text-bg-light"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td><img class="rounded-circle me-2" width="30" height="30" src="../assets/img/productos/1.png">Ibuprofeno 400mg</td>
-                                        <td>Cuidado Bucal</td>
-                                        <td>S/. 99</td>
-                                        <td>61</td>
-                                        <td><a id="editar-5" href="#"><i class="fas fa-pencil-alt text-primary text-bg-light"></i></a><a id="eliminar-5" class="ms-3" href="#"><i class="fas fa-trash-alt text-danger text-bg-light"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td><img class="rounded-circle me-2" width="30" height="30" src="../assets/img/productos/1.png">Ibuprofeno 400mg</td>
-                                        <td>Higiene</td>
-                                        <td>S/. 99</td>
-                                        <td>38</td>
-                                        <td><a id="editar-6" href="#"><i class="fas fa-pencil-alt text-primary text-bg-light"></i></a><a id="eliminar-6" class="ms-3" href="#"><i class="fas fa-trash-alt text-danger text-bg-light"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>8</td>
-                                        <td><img class="rounded-circle me-2" width="30" height="30" src="../assets/img/productos/1.png">Ibuprofeno 400mg</td>
-                                        <td>Primeros Auxilios</td>
-                                        <td>S/. 99</td>
-                                        <td>21</td>
-                                        <td><a id="editar-7" href="#"><i class="fas fa-pencil-alt text-primary text-bg-light"></i></a><a id="eliminar-7" class="ms-3" href="#"><i class="fas fa-trash-alt text-danger text-bg-light"></i></a></td>
-                                    </tr>
+                            <?php
+                            if (isset($_SESSION['productos'])) {
+                               foreach ($_SESSION['productos'] as $producto) { ?>
+                                     <tr>
+                                         <td><?php echo $producto['id'];?></td>
+                                         <td><?php echo $producto['nombre'];?></td>
+                                         <td><?php echo $producto['categoria'];?></td>
+                                         <td><?php echo "S/." . $producto['precio'];?></td>
+                                         <td><?php echo $producto['cantidad'];?></td>
+                                         <td>
+                                             <a href="#" data-id="<?php echo $producto['id'];?>" data-bs-toggle="modal" data-bs-target="#modal-eliminar-producto"><i class="fas fa-trash-alt text-danger text-bg-light"></i></a>
+                                         </td>
+                                     </tr>
+                            <?php
+                               }
+                            }
+                            ?>
                                 </tbody>
                             </table>
                         </div>
@@ -282,3 +301,6 @@
 
     <!-- Footer de la pagina -->
     <?php require "footer.php"; ?>
+
+
+

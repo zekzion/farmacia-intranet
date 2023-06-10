@@ -65,7 +65,7 @@
                     </li>
                     <li class="nav-item">
                         <div class="btn-group"><button class="btn btn-primary" type="button">Exportar</button><button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" type="button"></button>
-                            <div class="dropdown-menu"><a class="dropdown-item" href="#">PDF</a></div>
+                            <div class="dropdown-menu"><a onclick="descargarPDF('dataTable')" class="dropdown-item" href="#">PDF</a></div>
                         </div>
                     </li>
                     <li class="nav-item ms-1"><button class="btn btn-primary" type="button" style="border-bottom-style: none;" data-bs-target="#modal-1" data-bs-toggle="modal">Nuevo</button></li>

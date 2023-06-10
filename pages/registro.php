@@ -24,7 +24,7 @@ $titulo = "Pagina de Registro";
                         <div class="text-center">
                             <h4 class="text-dark mb-4">Crear una cuenta</h4>
                         </div>
-                        <form class="user">
+                        <form class="user" onsubmit="return validarConfiguracionRegistro()">
                             <div class="row mb-3">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input class="form-control form-control-user" type="text" id="nombre-nueva-cuenta" placeholder="Nombres" name="nombre-nueva-cuenta">
@@ -34,7 +34,7 @@ $titulo = "Pagina de Registro";
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <input class="form-control form-control-user" type="email" id="email-nueva-cuenta" aria-describedby="emailHelp" placeholder="Email" name="email-nueva-cuenta">
+                                <input class="form-control form-control-user" type="text" id="email-nueva-cuenta" aria-describedby="emailHelp" placeholder="Email" name="email-nueva-cuenta">
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
@@ -42,6 +42,11 @@ $titulo = "Pagina de Registro";
                                 </div>
                                 <div class="col-sm-6">
                                     <input class="form-control form-control-user" type="password" id="password-repetir-nueva-cuenta" placeholder="Repetir Contraseña" name="password-repetir-nueva-cuenta">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-">
+                                    <p class="text-sm-center" id="mensaje"></p>
                                 </div>
                             </div>
                                 <button class="btn btn-primary d-block btn-user w-100" type="submit" style="--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">Registrarse</button>
@@ -64,6 +69,7 @@ $titulo = "Pagina de Registro";
 <script src="../assets/fullCalendar/index.global.js"></script>
 <script src="../assets/fullCalendar/index.global.min.js"></script>
 <script src="../public/js/theme.js"></script>
+<script src="../public/js/validar-registro.js"></script>
 </body>
 
 </html>
