@@ -106,12 +106,12 @@
                             <h4 class="modal-title text-secondary">Registrar Nuevo Producto</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="productos.php" method="post">
+                            <form action="productos.php" method="post" onsubmit="return validarAddProducto()">
                                 <div class="row" id="nom">
                                     <div class="col">
                                         <div class="mb-3">
                                             <label class="form-label" for="nombre-producto"><strong>Nombre</strong></label>
-                                            <input class="form-control" type="text" id="nombre-producto" placeholder="Nombre del Producto" name="nombre-producto" required="">
+                                            <input class="form-control" type="text" id="nombre-producto" placeholder="Nombre del Producto" name="nombre-producto" >
                                         </div>
                                     </div>
                                 </div>
@@ -119,7 +119,7 @@
                                     <div class="col">
                                         <div class="mb-3">
                                             <label class="form-label" for="categoria-producto"><strong>Categoria</strong></label>
-                                            <input class="form-control" type="text" id="categoria-producto" placeholder="Categoria del Producto" name="categoria-producto" required="">
+                                            <input class="form-control" type="text" id="categoria-producto" placeholder="Categoria del Producto" name="categoria-producto">
                                         </div>
                                     </div>
                                 </div>

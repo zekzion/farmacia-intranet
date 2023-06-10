@@ -64,6 +64,7 @@ function validarContacto() {
     let direccionInput = document.getElementById("direccion");
     let ciudadInput = document.getElementById("ciudad");
     let paisInput = document.getElementById("pais");
+
     let direccion = direccionInput.value.trim();
     let ciudad = ciudadInput.value.trim();
     let pais = paisInput.value.trim();

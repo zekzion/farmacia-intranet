@@ -22,7 +22,7 @@ function descargarPDF(idtabla) {
     // obtener datos de la tabla, filas de contenido, se coloca en length-1 para no mostrar la columna opciones
     // que contiene los botones, eliminar y editar
     let datos = [];
-    for (let j = 0; j < filas.length-1; j++) {
+    for (let j = 0; j < filas.length; j++) {
         let fila = filas[j];
         let celdas = fila.getElementsByTagName("td");
         let filaDatos = [];
