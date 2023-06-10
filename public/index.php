@@ -32,9 +32,10 @@ if (isset($_POST["txtemail"]) && isset($_POST["txtpassword"])) {
             header("Location: ../pages/dashboard.php");
             exit();
         } else {
-            // mensaje de error de inicio de sesion
-            $error = "<div class='alert alert-danger'>Credenciales incorrectas!!</div>";
-        }
+           //mensaje de error de inicio de sesion
+           $error = "<div class='alert alert-danger'>Credenciales incorrectas!!</div>";
+
+       }
     }
 
     
@@ -74,9 +75,13 @@ $titulo = "Iniciar Sesión";
                                 <div class="text-center">
                                     <h4 class="text-dark mb-4">Iniciar Sesión</h4>
                                 </div>
-                                <form class="user" method="post" action="index.php">
-                                    <div class="mb-3"><input class="form-control form-control-user" type="email" id="txtemail" aria-describedby="emailHelp" placeholder="Ingresar email" name="txtemail"></div>
-                                    <div class="mb-3"><input class="form-control form-control-user" type="password" id="txtpassword" placeholder="Contraseña" name="txtpassword"></div>
+                                <form class="user" onsubmit="return validarConfiguracionLogin()" method="post" action="index.php">
+                                    <div class="mb-3">
+                                        <input class="form-control form-control-user" type="text" id="txtemail" aria-describedby="emailHelp" placeholder="Ingresar email" name="txtemail">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input class="form-control form-control-user" type="password" id="txtpassword" placeholder="Contraseña" name="txtpassword">
+                                    </div>
                                     <div class="mb-3">
                                         <div class="custom-control custom-checkbox small"></div>
                                     </div><button class="btn btn-primary d-block btn-user w-100" type="submit">Iniciar Sesión</button>
@@ -104,6 +109,7 @@ $titulo = "Iniciar Sesión";
 <script src="../assets/fullCalendar/index.global.js"></script>
 <script src="../assets/fullCalendar/index.global.min.js"></script>
 <script src="js/theme.js"></script>
+<script src="js/validarLogin.js"></script>
 </body>
 
 </html>
