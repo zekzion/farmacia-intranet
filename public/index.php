@@ -40,7 +40,7 @@ if (isset($_POST["txtemail"]) && isset($_POST["txtpassword"])) {
     
 }
 
-// se incluye el header para todas las paginas expecto INVENTARIO > PRODUCTOS e INVENTARIO > CATEGORIAS
+
 $titulo = "Iniciar Sesión";
 ?>
 

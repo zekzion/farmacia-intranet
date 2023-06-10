@@ -56,36 +56,6 @@
                 </div>
             </div>
             <div class="col-lg-8">
-                <div class="row mb-3 d-none">
-                    <div class="col">
-                        <div class="card text-white bg-primary shadow">
-                            <div class="card-body">
-                                <div class="row mb-2">
-                                    <div class="col">
-                                        <p class="m-0">Peformance</p>
-                                        <p class="m-0"><strong>65.2%</strong></p>
-                                    </div>
-                                    <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
-                                </div>
-                                <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card text-white bg-success shadow">
-                            <div class="card-body">
-                                <div class="row mb-2">
-                                    <div class="col">
-                                        <p class="m-0">Peformance</p>
-                                        <p class="m-0"><strong>65.2%</strong></p>
-                                    </div>
-                                    <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
-                                </div>
-                                <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col">
                         <div class="card shadow mb-3">
@@ -93,24 +63,35 @@
                                 <p class="text-primary m-0 fw-bold">Configuración de Usuario</p>
                             </div>
                             <div class="card-body">
-                                <form>
+                                <form onsubmit="return validarConfiguracionUsuario()">
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <div class="mb-3"><label class="form-label" for="username"><strong>Nombre de usuario</strong></label><input class="form-control" type="text" id="username" placeholder="<?php echo $_SESSION["username"]; ?>" name="username"></div>
+                                            <div class="mb-3">
+                                                <label class="form-label" for="username"> <strong>Nombre de usuario</strong></label>
+                                                <input class="form-control" type="text" id="username" placeholder="<?php echo $_SESSION["username"]; ?>" name="username">
+                                            </div>
                                         </div>
                                         <div class="col-sm-6">
-                                            <div class="mb-3"><label class="form-label" for="email"><strong>Email</strong></label><input class="form-control" type="email" id="email" placeholder="<?php echo $_SESSION["email"]; ?>" name="email"></div>
+                                            <div class="mb-3"><label class="form-label" for="email"><strong>Email</strong></label>
+                                                <input class="form-control" type="email" id="email" placeholder="<?php echo $_SESSION["email"]; ?>" name="email">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <div class="mb-3"><label class="form-label" for="first_name"><strong>Nombres</strong></label><input class="form-control" type="text" id="first_name" placeholder="<?php echo $_SESSION["nombre"]; ?>" name="first_name"></div>
+                                            <div class="mb-3"><label class="form-label" for="nombres"><strong>Nombres</strong></label>
+                                                <input class="form-control" type="text" id="nombres" placeholder="<?php echo $_SESSION["nombre"]; ?>" name="nombres">
+                                            </div>
                                         </div>
                                         <div class="col-sm-6">
-                                            <div class="mb-3"><label class="form-label" for="last_name"><strong>Apellidos</strong></label><input class="form-control" type="text" id="last_name" placeholder="<?php echo $_SESSION["apellido"]; ?>" name="last_name"></div>
+                                            <div class="mb-3"><label class="form-label" for="apellidos"><strong>Apellidos</strong></label>
+                                                <input class="form-control" type="text" id="apellidos" placeholder="<?php echo $_SESSION["apellido"]; ?>" name="apellidos">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Guardar</button></div>
+                                    <div class="mb-3">
+                                        <button class="btn btn-primary btn-sm" type="submit">Guardar</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -119,17 +100,25 @@
                                 <p class="text-primary m-0 fw-bold">Configuración de contacto</p>
                             </div>
                             <div class="card-body">
-                                <form>
-                                    <div class="mb-3"><label class="form-label" for="address"><strong>Dirección</strong></label><input class="form-control" type="text" id="address" placeholder="<?php echo $_SESSION["direccion"]; ?>" name="direccion"></div>
+                                <form onsubmit="return validarContacto()">
+                                    <div class="mb-3"><label class="form-label" for="direccion"><strong>Dirección</strong></label>
+                                        <input class="form-control" type="text" id="direccion" placeholder="<?php echo $_SESSION["direccion"]; ?>" name="direccion">
+                                    </div>
                                     <div class="row">
                                         <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="city"><strong>Ciudad</strong></label><input class="form-control" type="text" id="city" placeholder="<?php echo $_SESSION["ciudad"]; ?>" name="ciudad"></div>
+                                            <div class="mb-3"><label class="form-label" for="ciudad"><strong>Ciudad</strong></label>
+                                                <input class="form-control" type="text" id="ciudad" placeholder="<?php echo $_SESSION["ciudad"]; ?>" name="ciudad">
+                                            </div>
                                         </div>
                                         <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="country"><strong>País</strong></label><input class="form-control" type="text" id="country" placeholder="<?php echo $_SESSION["pais"]; ?>" name="pais"></div>
+                                            <div class="mb-3"><label class="form-label" for="pais"><strong>País</strong></label>
+                                                <input class="form-control" type="text" id="pais" placeholder="<?php echo $_SESSION["pais"]; ?>" name="pais">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Guardar</button></div>
+                                    <div class="mb-3">
+                                        <button class="btn btn-primary btn-sm" type="submit">Guardar</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

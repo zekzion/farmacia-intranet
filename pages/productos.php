@@ -54,25 +54,35 @@
                             <form>
                                 <div class="row" id="nom">
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="service_name"><strong>Nombre</strong></label><input class="form-control" type="text" id="service_name-1" placeholder="Nombre del Producto" name="nombre-producto" required=""></div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="service_name"><strong>Nombre</strong></label>
+                                            <input class="form-control" type="text" id="service_name-1" placeholder="Nombre del Producto" name="nombre-producto" required="">
+                                        </div>
                                     </div>
                                 </div>
-                                <div id="descrip" class="mb-3"><label class="form-label" for="client_description"><strong>Descripción</strong></label><textarea class="form-control" id="service_description-1" rows="4" name="descripcion-producto" placeholder="Descripción del Producto" required=""></textarea></div>
+                                <div id="descrip" class="mb-3">
+                                    <label class="form-label" for="descripcion-producto"><strong>Descripción</strong></label>
+                                    <textarea class="form-control" id="descripcion-producto" rows="4" name="descripcion-producto" placeholder="Descripción del Producto" required=""></textarea>
+                                </div>
                                 <div class="row" id="prec-cant">
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="service_client_start_date"><strong>Precio</strong></label><input class="form-control" type="text"></div>
+                                        <div class="mb-3"><label class="form-label" for="precio-producto"><strong>Precio</strong></label>
+                                            <input class="form-control" type="text" name="precio-producto" id="precio-producto">
+                                        </div>
                                     </div>
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="service_client_end_date"><strong>Cantidad</strong></label><input class="form-control" type="text"></div>
+                                        <div class="mb-3"><label class="form-label" for="cantidad-producto"><strong>Cantidad</strong></label>
+                                            <input class="form-control" type="text" name="cantidad-producto" id="cantidad-producto">
+                                        </div>
                                     </div>
                                 </div>
-                                <div id="img-prod-1" class="mb-3"><label class="form-label" for="service_client_payment_validated"><strong>Imagen del Producto</strong></label>
-                                    <div class="form-group mb-3"><input class="form-control" type="file" name="imagen-producto"></div>
-                                </div>
                                 <div id="error-entrada" class="mb-3"><span class="fw-bold text-danger"></span></div>
+                                <div class="col d-flex justify-content-end">
+                                    <button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancelar</button>
+                                    <button class="btn btn-primary ms-3" type="button">Guardar</button>
+                                </div>
                             </form>
                         </div>
-                        <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancelar</button><button class="btn btn-primary" type="button">Guardar</button></div>
                     </div>
                 </div>
             </div>

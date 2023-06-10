@@ -11,8 +11,8 @@ $titulo = "Pagina de Registro";
 <!-- Estilos css -->
 <?php require "cabecera.php"; ?>
 
-<body class="bg-gradient-primary d-flex align-items-center min-vh-100">
-<div class="container">
+<body class="bg-gradient-primary ">
+<div class="container d-flex align-items-center justify-content-center min-vh-100">
     <div class="card shadow-lg o-hidden border-0 my-5">
         <div class="card-body p-0">
             <div class="row">
@@ -26,14 +26,25 @@ $titulo = "Pagina de Registro";
                         </div>
                         <form class="user">
                             <div class="row mb-3">
-                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="nombre-nueva-cuenta" placeholder="Nombres" name="nombre-nueva-cuenta"></div>
-                                <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="apellido-nueva-cuenta" placeholder="Apellidos" name="apellido-nueva-cuenta"></div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input class="form-control form-control-user" type="text" id="nombre-nueva-cuenta" placeholder="Nombres" name="nombre-nueva-cuenta">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input class="form-control form-control-user" type="text" id="apellido-nueva-cuenta" placeholder="Apellidos" name="apellido-nueva-cuenta">
+                                </div>
                             </div>
-                            <div class="mb-3"><input class="form-control form-control-user" type="email" id="email-nueva-cuenta" aria-describedby="emailHelp" placeholder="Email" name="email-nueva-cuenta"></div>
+                            <div class="mb-3">
+                                <input class="form-control form-control-user" type="email" id="email-nueva-cuenta" aria-describedby="emailHelp" placeholder="Email" name="email-nueva-cuenta">
+                            </div>
                             <div class="row mb-3">
-                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="password-nueva-cuenta" placeholder="Contraseña" name="password-nueva-cuenta"></div>
-                                <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="password-repetir-nueva-cuenta" placeholder="Repetir Contraseña" name="password-repetir-nueva-cuenta"></div>
-                            </div><button class="btn btn-primary d-block btn-user w-100" type="submit" style="--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">Registrarse</button>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input class="form-control form-control-user" type="password" id="password-nueva-cuenta" placeholder="Contraseña" name="password-nueva-cuenta">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input class="form-control form-control-user" type="password" id="password-repetir-nueva-cuenta" placeholder="Repetir Contraseña" name="password-repetir-nueva-cuenta">
+                                </div>
+                            </div>
+                                <button class="btn btn-primary d-block btn-user w-100" type="submit" style="--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">Registrarse</button>
                             <hr>
                         </form>
                         <div class="text-center"><a class="small">¿Olvidaste tu contraseña?</a></div>
