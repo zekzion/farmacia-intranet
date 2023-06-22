@@ -12,7 +12,7 @@ function validarAddProducto() {
     let precioP = precioProdInput.value.trim();
     let cantidadP = cantidadProdInput.value.trim();
 
-    // regex para nombre
+    // regex para validar nombre
     let nombreRegex = /^\p{L}[a-zA-Z0-9ñÑ\s]*$/u;
     let categoriaRegex = /^[a-zA-Z\s]+$/;
     let precioRegex = /^(?!^0\.00$)(([1-9][\d]{0,6})|([0]))\.[\d]{2}$/;

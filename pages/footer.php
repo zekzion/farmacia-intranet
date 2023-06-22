@@ -35,6 +35,7 @@
 <script src="../public/js/validar-formulario.js"></script>
 <script src="../public/js/generarpdf.js"></script>
 <script src="../public/js/validarFormularioAddProducto.js"></script>
+<script src="../public/js/chartVentasMensuales.js"></script>
 
 
 <script src="../public/js/jspdf.plugin.autotable.js"></script>

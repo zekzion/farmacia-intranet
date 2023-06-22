@@ -77,14 +77,15 @@ $titulo = "Iniciar Sesión";
                                 </div>
                                 <form class="user" onsubmit="return validarConfiguracionLogin()" method="post" action="index.php">
                                     <div class="mb-3">
-                                        <input class="form-control form-control-user" type="text" id="txtemail" aria-describedby="emailHelp" placeholder="Ingresar email" name="txtemail">
+                                        <input class="form-control form-control-user" oninput="validarCampos()"  type="text" id="txtemail" aria-describedby="emailHelp" placeholder="Ingresar email" name="txtemail">
                                     </div>
                                     <div class="mb-3">
-                                        <input class="form-control form-control-user" type="password" id="txtpassword" placeholder="Contraseña" name="txtpassword">
+                                        <input class="form-control form-control-user" oninput="validarCampos()"  type="password" id="txtpassword" placeholder="Contraseña" name="txtpassword">
                                     </div>
                                     <div class="mb-3">
                                         <div class="custom-control custom-checkbox small"></div>
-                                    </div><button class="btn btn-primary d-block btn-user w-100" type="submit">Iniciar Sesión</button>
+                                    </div>
+                                    <button id="boton-inicio-sesion" class="btn btn-primary d-block btn-user w-100" type="submit" disabled>Iniciar Sesión</button>
                                     <hr>
                                 </form>
                                 <div class="form-group">
