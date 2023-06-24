@@ -28,6 +28,11 @@
                         </div>
                     </div>
                 </li>
+                <li class="nav-item" id="pedidos">
+                    <a class="nav-link" href="../pages/pedidos.php">
+                        <i class="fas fa-tasks"></i><span>Pedidos</span>
+                    </a>
+                </li>
                 <li class="nav-item" id="reportes"><a class="nav-link" href="ventas.php"><i class="fas fa-tasks"></i><span>Reporte de ventas</span></a></li>
                 <li class="nav-item" id="calendario"><a class="nav-link" href="calendario.php"><i class="far fa-calendar"></i><span>Calendario</span></a></li>
                 <li class="nav-item" id="docs"></li>

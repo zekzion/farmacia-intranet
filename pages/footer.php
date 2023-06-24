@@ -29,6 +29,8 @@
 <script src="../public/js/addCalendario.js"></script>
 <script src="../assets/fullCalendar/index.global.js"></script>
 <script src="../assets/fullCalendar/index.global.min.js"></script>
+<script src="../assets/momentjs/moment.js"></script>
+<script src="../assets/sweetalert2/sweetalert2.all.min.js"></script>
 <script src="../public/js/theme.js"></script>
 <script src="../assets/jspdf/jspdf.umd.min.js"></script>
 <script src="../assets/html2canvas/html2canvas.min.js"></script>
@@ -36,6 +38,9 @@
 <script src="../public/js/generarpdf.js"></script>
 <script src="../public/js/validarFormularioAddProducto.js"></script>
 <script src="../public/js/chartVentasMensuales.js"></script>
+<script src="../public/js/validarRecuperarPass.js"></script>
+<script src="../public/js/calendario.js"></script>
+
 
 
 <script src="../public/js/jspdf.plugin.autotable.js"></script>

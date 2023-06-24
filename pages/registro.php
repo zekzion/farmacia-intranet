@@ -63,7 +63,7 @@ $titulo = "Pagina de Registro";
                             <hr>
                         </form>
                         <div class="text-center">
-                            <a class="small">¿Olvidaste tu contraseña?</a>
+                            <a href="recuperar_pass.php" class="small">¿Olvidaste tu contraseña?</a>
                         </div>
                         <div class="text-center">
                             <a class="small" href="../public/index.php">¿Ya tienes una cuenta? Inicia Sesión</a>

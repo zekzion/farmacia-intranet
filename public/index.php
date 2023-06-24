@@ -91,7 +91,7 @@ $titulo = "Iniciar Sesión";
                                 <div class="form-group">
                                         <?php echo $error; ?>
                                 </div>
-                                <div class="text-center"><a class="small" href="forgot-password.php">¿Olvidaste tu contraseña?</a></div>
+                                <div class="text-center"><a class="small" href="../pages/recuperar_pass.php">¿Olvidaste tu contraseña?</a></div>
                                 <div class="text-center"><a class="small" href="../pages/registro.php">Crear una cuenta</a></div>
                             </div>
                         </div>

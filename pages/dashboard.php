@@ -45,6 +45,11 @@ $titulo = "Pagina de Inicio";
                         </div>
                     </div>
                 </li>
+                <li class="nav-item" id="pedidos">
+                    <a class="nav-link" href="../pages/pedidos.php">
+                        <i class="fas fa-tasks"></i><span>Pedidos</span>
+                    </a>
+                </li>
                 <li class="nav-item" id="reportes">
                     <a class="nav-link" href="../pages/ventas.php">
                         <i class="fas fa-tasks"></i><span>Reporte de ventas</span>
