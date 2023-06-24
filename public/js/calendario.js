@@ -21,7 +21,7 @@ let calendar = new FullCalendar.Calendar(calendarEl, {
             showCancelButton: true,
             buttonsStyling: false,
             confirmButtonText: "Crear",
-            cancelButtonText: "Csancelar",
+            cancelButtonText: "Cancelar",
             customClass: {
                 confirmButton: "btn btn-primary",
                 cancelButton: "btn btn-active-light"
