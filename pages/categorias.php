@@ -6,6 +6,19 @@
         exit();
     }
     $titulo = "Pagina de Categorías";
+
+    include_once "conexion.php";
+
+    $objeto = new Conexion();
+
+    $conexion = $objeto->conectar();
+
+    // recuperar datos de las categorias
+    $sql = "select * from categorias";
+    $query = $conexion->prepare($sql);
+    $query->execute();
+    $categorias = $query->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
     <!-- Estilos css -->
@@ -118,38 +131,16 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Medicamentos</td>
-                                    <td>Medicamentos para tratar alergias.</td>
-                                    <td>33</td>
-                                    <td>06-06-2023</td>
-                                    <td class="text-start"><a id="editar" href="#"><i class="fas fa-pencil-alt text-primary text-bg-light"></i></a><a id="eliminar" class="ms-3" href="#"><i class="fas fa-trash-alt text-danger text-bg-light"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Cuidado Personal</td>
-                                    <td>Medicamentos para tratar alergias.</td>
-                                    <td>47</td>
-                                    <td>06-06-2023</td>
-                                    <td><a id="editar-1" href="#"><i class="fas fa-pencil-alt text-primary text-bg-light"></i></a><a id="eliminar-1" class="ms-3" href="#"><i class="fas fa-trash-alt text-danger text-bg-light"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Cuidado Bucal</td>
-                                    <td>Medicamentos para tratar alergias.</td>
-                                    <td>25</td>
-                                    <td>06-06-2023</td>
-                                    <td><a id="editar-2" href="#"><i class="fas fa-pencil-alt text-primary text-bg-light"></i></a><a id="eliminar-2" class="ms-3" href="#"><i class="fas fa-trash-alt text-danger text-bg-light"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Higiene</td>
-                                    <td>Medicamentos para tratar alergias.</td>
-                                    <td>41</td>
-                                    <td>06-06-2023</td>
-                                    <td><a id="editar-3" href="#"><i class="fas fa-pencil-alt text-primary text-bg-light"></i></a><a id="eliminar-3" class="ms-3" href="#"><i class="fas fa-trash-alt text-danger text-bg-light"></i></a></td>
-                                </tr>
+                                <?php  foreach ($categorias as $categoria): ?>
+                                    <tr>
+                                        <td><?= $categoria["id_categoria"]; ?></td>
+                                        <td><?= $categoria["nombre"]; ?></td>
+                                        <td><?= $categoria["descripcion"]; ?></td>
+                                        <td><?= $categoria["fecha_creacion"]; ?></td>
+                                        <td><?= $categoria["fecha_ultima_edicion"]; ?></td>
+                                        <td class="text-start"><a id="editar" href="#"><i class="fas fa-pencil-alt text-primary text-bg-light"></i></a><a id="eliminar" class="ms-3" href="#"><i class="fas fa-trash-alt text-danger text-bg-light"></i></a></td>
+                                    </tr>
+                                <?php endforeach; ?>
                                 </tbody>
                                 <tfoot>
                                 <tr></tr>
